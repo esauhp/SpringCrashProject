@@ -24,9 +24,6 @@ jobs:
 
       - name: Make gradlew executable
         run: chmod +x ./gradlew
-          - name: Build JAR
-            run: |
-              ./gradlew bootJar
 
       - name: Build JAR
         run: |
