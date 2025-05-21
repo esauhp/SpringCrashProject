@@ -22,12 +22,11 @@ jobs:
         run: |
           ssh-keyscan -H 5.161.58.196 > ~/.ssh/known_hosts
 
-      - name: Setup JDK 17 # O la versión que necesites
-        uses: actions/setup-java@v3
-        with:
-            java-version: '17' # Especifica la versión de JDK
-            distribution: 'temurin' # O 'adopt', 'zulu', etc.
-            cache: gradle
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+          - name: Build JAR
+            run: |
+              ./gradlew bootJar
 
       - name: Build JAR
         run: |
