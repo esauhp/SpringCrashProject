@@ -11,7 +11,7 @@ import org.springframework.security.web.authentication.HttpStatusEntryPoint
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
 
 @Configuration
-class SegurityConfig(
+class SecurityConfig(
     private val jwtAuthFilter: JwtAuthFilter
 ) {
 
@@ -22,6 +22,8 @@ class SegurityConfig(
             .sessionManagement { it.sessionCreationPolicy(SessionCreationPolicy.STATELESS) }
             .authorizeHttpRequests { auth ->
                 auth
+                    .requestMatchers("/")
+                    .permitAll()
                     .requestMatchers("/auth/**")
                     .permitAll()
                     .dispatcherTypeMatchers(
